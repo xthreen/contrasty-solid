@@ -195,7 +195,7 @@ const App: Component = () => {
               onInput={handleRgbEvent}
             />
             <div class={styles.outputRgb} id="text-bg">
-              <label class={styles.outputLabel}>Value</label>
+              <label class={styles.outputLabel} for="rgbTwoDisplay">Value</label>
               <input
                 type="text"
                 id="rgbTwoDisplay"
@@ -206,7 +206,7 @@ const App: Component = () => {
               />
               <select
                 onChange={handleSelectEvent}
-                id="display-value-select-one"
+                id="display-value-select-two"
               >
                 <option value="Hex">Hex</option>
                 <option value="RGB">RGB</option>
