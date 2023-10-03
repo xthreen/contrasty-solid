@@ -6,6 +6,16 @@
   font-size: 3rem;
   width: 100%;
 }
+.typography {
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+}
+.textContainer {
+  justify-self: center;
+  width: 74%;
+}
 main {
   display: flex;
   flex-direction: column;
@@ -34,13 +44,6 @@ article {
   align-items: center;
   width: 100%;
   margin-bottom: 1rem;
-}
-.radio-btn-group {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-bottom: 0.5rem;
-  max-height: 2rem;
 }
 #lorem {
   padding: 1rem;
@@ -91,8 +94,8 @@ footer {
 }
 .selectorLabel {
   position: absolute;
-  top: 15%;
-  left: 1%;
+  top: -38%;
+  left: 12%;
   font-size: 1.5rem;
   pointer-events: none;
   color: #cfcfcf;

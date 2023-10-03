@@ -16,12 +16,13 @@ const hslRe =
   /(?:hsl\()?(\d{1,3}), ?(\d{1,3}\.?\d{1,2})%?, ?(\d{1,3}\.?\d{1,2})(?:%\))?/;
 
 type DisplayValue = "Hex" | "RGB" | "HSL";
+type TextSize = "large" | "normal";
 
 const App: Component = () => {
   const [getWindowWidth, setWindowWidth] = createSignal(window.innerWidth);
   const [getRgbOne, setRgbOne] = createSignal([255, 255, 255]);
   const [getRgbTwo, setRgbTwo] = createSignal([0, 0, 0]);
-  const [getTextSize, setTextSize] = createSignal("large");
+  const [getTextSize, setTextSize] = createSignal("large" as TextSize);
   const [getRatio, setRatio] = createSignal(0);
   const [getIsAccessible, setIsAccessible] = createSignal(false);
   const [getAsValueOne, setAsValueOne] = createSignal("Hex" as DisplayValue);
@@ -48,7 +49,7 @@ const App: Component = () => {
 
   const handleTextSizeEvent = (event: Event) => {
     const select = event.target as HTMLSelectElement;
-    setTextSize(select.value);
+    setTextSize(select.value as TextSize);
   };
 
   const handleSelectEvent = (event: Event) => {
@@ -125,6 +126,15 @@ const App: Component = () => {
   return (
     <>
       <header class={styles.banner}>Text Contrast Accessibility</header>
+      <div id="desc-container" class={styles.textContainer}>
+        <p id="description" class={styles.typography}>Styling text isn't usually the foremost concern for many developers, however the readability of any
+          paragraph of text is a crucial part of the user experience. This tool allows you to test the contrast
+          ratio of two colors to ensure that your text is accessible to a broad user base. The WCAG 2.0 standard
+          requires a contrast ratio of 4.5:1 for normal text and 3:1 for large text. This tool will display the
+          contrast ratio of the two colors you select, and will also tell you if the contrast ratio is sufficient
+          for normal or large text.
+        </p>
+      </div>
       <main class={styles.mainGrid}>
         <div class={styles.colorSelector}>
           <label for="colorSelect" class={styles.selectorLabel}>
@@ -137,7 +147,7 @@ const App: Component = () => {
             onChange={handleTextSizeEvent}
           >
             <option value="large">Large text</option>
-            <option value="small">Small text</option>
+            <option value="normal">Normal text</option>
           </select>
         </div>
         <article class={styles.rgbOne} id="test-text">
