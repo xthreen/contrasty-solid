@@ -1,0 +1,23 @@
+{
+  "name": "contrasty-solid",
+  "version": "0.0.1",
+  "description": "A simple color contrast ratio comparison app with SolidJS, Vite and TypeScript.",
+  "scripts": {
+    "start": "vite",
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.8.0",
+    "solid-devtools": "^0.27.7",
+    "typescript": "^5.2.2",
+    "vite": "^4.4.9",
+    "vite-plugin-solid": "^2.7.0",
+    "vitest": "^0.34.6"
+  },
+  "dependencies": {
+    "solid-js": "^1.7.12"
+  }
+}
