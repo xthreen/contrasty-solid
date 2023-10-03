@@ -64,53 +64,78 @@ const App: Component = () => {
     asValue: "Hex" | "RGB" | "HSL",
     element: HTMLInputElement
   ) => {
-    let rgb: number[];
+    // let rgb: number[];
+    // if (asValue === "RGB") {
+    //   rgb = element.value
+    //     .match(rgbRe)!
+    //     .slice(1)
+    //     .map((value) => parseInt(value));
+    // } else if (asValue === "HSL") {
+    //   rgb = hslToRgb(
+    //     element.value
+    //       .match(hslRe)!
+    //       .slice(1)
+    //       .map((value) => {
+    //         return parseFloat(parseFloat(value).toPrecision(3))
+    //       })
+    //   );
+    // } else {
+    //   rgb = hexToRgb(element.value);
+    // }
+    // switch (element.id) {
+    //   case "rgbOne":
+    //     setRgbOne(rgb);
+    //     break;
+    //   case "rgbTwo":
+    //     setRgbTwo(rgb);
+    //     break;
+    //   case "rgbOneDisplay":
+    //     setRgbOne(rgb);
+    //     break;
+    //   case "rgbTwoDisplay":
+    //     setRgbTwo(rgb);
+    //     break;
+    // }
     if (asValue === "RGB") {
-      rgb = element.value
-        .match(rgbRe)!
-        .slice(1)
-        .map((value) => parseInt(value));
+      const rgbMatches = element.value.match(rgbRe);
+      if (rgbMatches) {
+        return [
+          parseInt(rgbMatches[1]),
+          parseInt(rgbMatches[2]),
+          parseInt(rgbMatches[3]),
+        ];
+      } else {
+        return hexToRgb(element.value);
+      }
     } else if (asValue === "HSL") {
-      rgb = hslToRgb(
-        element.value
-          .match(hslRe)!
-          .slice(1)
-          .map((value) => {
-            return parseFloat(parseFloat(value).toPrecision(3))
-          })
-      );
+      const hslMatches = element.value.match(hslRe);
+      if (hslMatches) {
+        return hslToRgb([
+          parseInt(hslMatches[1]),
+          parseFloat(parseFloat(hslMatches[2]).toPrecision(3)),
+          parseFloat(parseFloat(hslMatches[3]).toPrecision(3)),
+        ]);
+      } else {
+        return hexToRgb(element.value);
+      }
     } else {
-      rgb = hexToRgb(element.value);
-    }
-    switch (element.id) {
-      case "rgbOne":
-        setRgbOne(rgb);
-        break;
-      case "rgbTwo":
-        setRgbTwo(rgb);
-        break;
-      case "rgbOneDisplay":
-        setRgbOne(rgb);
-        break;
-      case "rgbTwoDisplay":
-        setRgbTwo(rgb);
-        break;
+      return hexToRgb(element.value);
     }
   };
 
   const handleRgbEvent = (event: Event) => {
     const element = event.target as HTMLInputElement;
     if (element.id === "rgbOne") {
-      handleRgbValue(getAsValueOne(), element);
+      setRgbOne(handleRgbValue(getAsValueOne(), element));
     }
     if (element.id === "rgbTwo") {
-      handleRgbValue(getAsValueTwo(), element);
+      setRgbTwo(handleRgbValue(getAsValueTwo(), element));
     }
     if (element.id === "rgbOneDisplay") {
-      handleRgbValue(getAsValueOne(), element);
+      setRgbOne(handleRgbValue(getAsValueOne(), element));
     }
     if (element.id === "rgbTwoDisplay") {
-      handleRgbValue(getAsValueTwo(), element);
+      setRgbTwo(handleRgbValue(getAsValueTwo(), element));
     }
     refresh();
   };

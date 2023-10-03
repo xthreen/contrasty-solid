@@ -1,6 +1,8 @@
+import { join } from 'path'
 import { defineConfig } from 'vite';
 import solidPlugin from 'vite-plugin-solid';
 // import devtools from 'solid-devtools/vite';
+import { partytownVite } from '@builder.io/partytown/utils'
 
 export default defineConfig({
   plugins: [
@@ -10,6 +12,10 @@ export default defineConfig({
     */
     // devtools(),
     solidPlugin(),
+    partytownVite({
+      debug: false,
+      dest: join(__dirname, 'dist', '~partytown')
+    })
   ],
   server: {
     port: 3000,

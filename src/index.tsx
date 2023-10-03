@@ -1,8 +1,13 @@
 /* @refresh reload */
 import { render } from 'solid-js/web';
+import { partytownSnippet } from "@builder.io/partytown/integration/index.mjs";
 
 import './index.css';
 import App from './App';
+
+const partyTown = document.head.appendChild(document.createElement('script'));
+partyTown.type = 'module';
+partyTown.innerHTML = partytownSnippet();
 
 const root = document.getElementById('root');
 
