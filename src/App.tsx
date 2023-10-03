@@ -64,38 +64,6 @@ const App: Component = () => {
     asValue: "Hex" | "RGB" | "HSL",
     element: HTMLInputElement
   ) => {
-    // let rgb: number[];
-    // if (asValue === "RGB") {
-    //   rgb = element.value
-    //     .match(rgbRe)!
-    //     .slice(1)
-    //     .map((value) => parseInt(value));
-    // } else if (asValue === "HSL") {
-    //   rgb = hslToRgb(
-    //     element.value
-    //       .match(hslRe)!
-    //       .slice(1)
-    //       .map((value) => {
-    //         return parseFloat(parseFloat(value).toPrecision(3))
-    //       })
-    //   );
-    // } else {
-    //   rgb = hexToRgb(element.value);
-    // }
-    // switch (element.id) {
-    //   case "rgbOne":
-    //     setRgbOne(rgb);
-    //     break;
-    //   case "rgbTwo":
-    //     setRgbTwo(rgb);
-    //     break;
-    //   case "rgbOneDisplay":
-    //     setRgbOne(rgb);
-    //     break;
-    //   case "rgbTwoDisplay":
-    //     setRgbTwo(rgb);
-    //     break;
-    // }
     if (asValue === "RGB") {
       const rgbMatches = element.value.match(rgbRe);
       if (rgbMatches) {
